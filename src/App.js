@@ -8,7 +8,7 @@ import axios from 'axios'
 function App() {
   const [state,setState] = useState({
     s:"",
-    results: [],
+    results:[],
     selected:{}
   })
   const apiurl = "http://www.omdbapi.com/?apikey=426fe8ff"
@@ -49,7 +49,7 @@ function App() {
       </header>
       <main>
           <Search handleInput = {handleInput} search={search}/>
-          <Results results={state.results}/>
+          <Results results={state.results} openPopup={openPopup}/>
           {(typeof state.selected.Title!="undefined")?<Popup selected={state.selected}closePopup={closePopup}/>:false}
       </main>
     </div>
