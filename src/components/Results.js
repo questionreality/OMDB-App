@@ -1,7 +1,7 @@
 import React from 'react'
 import Result from './Result'
 function Results({results,openPopup}){ 
-    if(results!=undefined)
+    if(results!==undefined)
     return( <div>
             <section className="results">
                 {results.map(result=>(

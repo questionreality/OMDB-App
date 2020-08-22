@@ -11,14 +11,27 @@ function App() {
     results:[],
     selected:{}
   })
+
   const apiurl = "http://www.omdbapi.com/?apikey=426fe8ff"
   const search = (e)=>{
+    setState({...state,results:[]})
     if(e.key==="Enter")
     axios(apiurl+"&s="+state.s).then(({data})=>{
-      console.log(data)
       let result = data.Search;
-      setState(prevState=>{
-        return{...prevState,results:result} 
+      result.map(res=>{
+        axios(apiurl+"&i="+res.imdbID).then(({data})=>{
+          setState(prevState=>{
+            return {...prevState,results: prevState.results.concat(data).sort(
+              (a,b)=>{
+                if((+a.imdbRating-+b.imdbRating)>0){
+                  return -1
+                }
+                else
+                  return 1
+              }
+            )}
+          })
+        })
       })
     })
   }
