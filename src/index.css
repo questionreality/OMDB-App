@@ -141,7 +141,8 @@ section{
   cursor: pointer;
 }
 .popup .content .close:hover{
-  background: #223343;
+  color: #f0a500;
+  background-color: #000000
 }
 
 
