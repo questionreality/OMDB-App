@@ -18,14 +18,14 @@ function App() {
     if(e.key==="Enter")
     axios(apiurl+"&s="+state.s).then(({data})=>{
       let result = data.Search;
+      if(result!==undefined)
       result.map(res=>{
         axios(apiurl+"&i="+res.imdbID).then(({data})=>{
           setState(prevState=>{
             return {...prevState,results: prevState.results.concat(data).sort(
               (a,b)=>{
-                if((+a.imdbRating-+b.imdbRating)>0){
+                if((+a.imdbRating-+b.imdbRating)>0)
                   return -1
-                }
                 else
                   return 1
               }
@@ -42,13 +42,10 @@ function App() {
     })
     console.log(state.s) 
   } 
-  const openPopup = id => {
-    axios(apiurl+'&i='+id).then(({data})=>{
-      let result = data;
+  const openPopup = result => {
       setState(prevState=>{
         return{...prevState,selected:result}
       })
-    })
   }
   const closePopup = () => {
     setState(prevState=>{
@@ -58,7 +55,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Movie Database</h1>
+        <h1>OMDB</h1>
       </header>
       <main>
           <Search handleInput = {handleInput} search={search}/>

@@ -73,6 +73,10 @@ section{
   flex: 1 1 100%;
   transition: 0.4s ease-out;
 }
+.results .result h3 span{
+  font-weight: 300;
+  font-size: 20px;
+}
 .results .result:hover h3{
   background: #ffffff;
   color: #223343;
